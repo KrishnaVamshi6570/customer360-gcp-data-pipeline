@@ -28,6 +28,7 @@ The final output is a **business dashboard providing insights into customer beha
 ### Analytics Dashboard
 
 ![Dashboard](dashboard/customer360_dashboard.png)
+https://lookerstudio.google.com/reporting/b1c3db47-6d34-428f-bbe4-a43c34fef63e
 
 ---
 
