@@ -1,0 +1,12 @@
+config {
+  type: "table",
+  schema: "silver_curated",
+  name: "silver_products"
+}
+
+SELECT
+  product_id,
+  product_category_name,
+  ingestion_timestamp,
+  batch_id
+FROM ${ref("products_src")}

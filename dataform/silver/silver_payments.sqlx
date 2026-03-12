@@ -1,0 +1,14 @@
+config {
+  type: "table",
+  schema: "silver_curated",
+  name: "silver_payments"
+}
+
+SELECT
+  order_id,
+  payment_type,
+  payment_installments,
+  payment_value,
+  ingestion_timestamp,
+  batch_id
+FROM ${ref("payments_src")}

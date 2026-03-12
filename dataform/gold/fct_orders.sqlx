@@ -1,0 +1,34 @@
+config {
+  type: "incremental",
+  schema: "gold_marts",
+  name: "fct_orders",
+  uniqueKey: ["order_id"]
+}
+
+SELECT
+  o.order_id,
+  o.customer_id,
+  o.order_status,
+  o.order_purchase_timestamp,
+  o.ingestion_timestamp AS ingestion_timestamp,
+  SUM(oi.price) AS total_product_value,
+  SUM(oi.freight_value) AS total_freight_value,
+  SUM(oi.price + oi.freight_value) AS total_order_value
+FROM ${ref("silver_orders")} o
+LEFT JOIN ${ref("silver_order_items")} oi
+  ON o.order_id = oi.order_id
+
+${when(incremental(), `
+WHERE o.ingestion_timestamp >
+  COALESCE(
+    (SELECT MAX(t.ingestion_timestamp) FROM ${self()} AS t),
+    TIMESTAMP('1900-01-01')
+  )
+`)}
+
+GROUP BY
+  o.order_id,
+  o.customer_id,
+  o.order_status,
+  o.order_purchase_timestamp,
+  o.ingestion_timestamp

@@ -1,0 +1,14 @@
+config {
+  type: "table",
+  schema: "silver_curated",
+  name: "silver_orders"
+}
+
+SELECT
+  order_id,
+  customer_id,
+  order_status,
+  order_purchase_timestamp,
+  ingestion_timestamp,
+  batch_id
+FROM ${ref("orders_src")}
