@@ -1,3 +1,8 @@
+![GCP](https://img.shields.io/badge/Platform-Google%20Cloud-blue)
+![BigQuery](https://img.shields.io/badge/Warehouse-BigQuery-yellow)
+![Dataform](https://img.shields.io/badge/Transformation-Dataform-purple)
+![Looker](https://img.shields.io/badge/Visualization-Looker%20Studio-green)
+![License](https://img.shields.io/badge/License-MIT-blue)
 ---
 
 # Customer 360 Data Engineering Pipeline on GCP
@@ -11,6 +16,18 @@ This project implements a **Customer 360 analytics pipeline on Google Cloud Plat
 The pipeline transforms raw e-commerce data into analytics-ready tables using a **Medallion Architecture (Bronze → Silver → Gold)** and supports **incremental processing and late-arriving data handling**.
 
 The final output is a **business dashboard providing insights into customer behavior, revenue trends, and geographic order distribution.**
+
+---
+
+## Project Demo
+
+### Architecture
+
+![Architecture](architecture/customer360_architecture.png)
+
+### Analytics Dashboard
+
+![Dashboard](dashboard/customer360_dashboard.png)
 
 ---
 
